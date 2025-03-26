@@ -16,15 +16,15 @@ WHERE TABLE_TYPE = 'BASE TABLE';
 gönderici şirketin adı (Shipper) ile birlikte bir liste çıkarın.*/
 
 SELECT
-o.OrderID,
-c.CompanyName AS SirketAdi,
-e.FirstName + ' ' + e.LastName AS CalisanAdi,
-o.OrderDate,
-s.CompanyName AS GondericiSirket
-FROM Orders o
-JOIN Customers c ON o.CustomerID = c.CustomerID
-JOIN Employees e ON o.EmployeeID = e.EmployeeID
-JOIN Shippers s ON o.ShipVia = s.ShipperID;
+ord.OrderID,
+cus.CompanyName AS SirketAdi,
+emp.FirstName + ' ' + emp.LastName AS CalisanAdi,
+ord.OrderDate,
+shi.CompanyName AS GondericiSirket
+FROM Orders ord
+JOIN Customers cus ON ord.CustomerID = cus.CustomerID
+JOIN Employees emp ON ord.EmployeeID = emp.EmployeeID
+JOIN Shippers shi ON ord.ShipVia = shi.ShipperID;
 
 
 /*3.Aggregate Fonksiyon:  Tüm siparişlerin toplam tutarını bulun. 
